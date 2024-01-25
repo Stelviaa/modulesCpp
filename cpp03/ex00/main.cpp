@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 11:58:54 by sforesti          #+#    #+#             */
-/*   Updated: 2023/12/04 13:42:33 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:57:48 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
     foo.beRepaired(10);
     foo.setEnergyPoints(0);
     foo.attack ("you");
-    foo.takeDamage(20);
+    foo.takeDamage(2147483648);
     foo.beRepaired(10);
     
     return 0;

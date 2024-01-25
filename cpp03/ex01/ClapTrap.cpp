@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:58:33 by sforesti          #+#    #+#             */
-/*   Updated: 2023/12/05 12:50:35 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:59:30 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void ClapTrap::attack(const std::string& target)
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (amount > 4294967295 || amount < 1)
+	if (amount > 2147483647 || amount < 1)
 	{
 		std::cout << "Impossible action, value not accepted for this action" << std::endl;
 		return ;
@@ -88,7 +88,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (amount <= 4294967295 || amount < 1)
+	if (amount <= 2147483647 || amount < 1)
 	{
 		std::cout << this->getName() << " recovers " << amount << " hit points and " << amount << " energy points" << std::endl;
 		this->_hitPoints += amount;
