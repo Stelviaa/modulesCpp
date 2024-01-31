@@ -6,11 +6,13 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 11:33:33 by sforesti          #+#    #+#             */
-/*   Updated: 2024/01/29 16:10:16 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/01/31 12:50:25 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BUREAUCRAT_HPP
 #include "Bureaucrat.hpp"
+#endif
 
 Bureaucrat::Bureaucrat() :  _name("John"), _grade(1) {
 	std::cout << "Default Constructor called" << std::endl;
@@ -77,6 +79,20 @@ void	Bureaucrat::decrementGrade()
 
 int Bureaucrat::getGrade() const {
 	return (this->_grade);
+}
+
+void	Bureaucrat::signForm(Form &form){
+	try
+	{
+		if (form.getSignature())
+			std::cout << this->_name << " signed " << form.getName() << std::endl;
+		else
+			throw GradeTooLowException();
+	}
+	catch (GradeTooLowException & e)
+	{
+		std::cerr << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << " or value not set" << std::endl;
+	}
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const & cp){

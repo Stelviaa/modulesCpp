@@ -6,28 +6,33 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:06:41 by sforesti          #+#    #+#             */
-/*   Updated: 2024/01/29 17:47:30 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:35:30 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#ifndef BUREAUCRAT_HPP
 #include "Bureaucrat.hpp"
+#endif
+
+class Bureaucrat;
 
 class Form{
 	private:
 		std::string const	_name;
-		bool				signature;
-		int const			_gradeExec;
-		int const			_gradeSign;
+		bool				_signature;
+		const int			_gradeExec;
+		const int			_gradeSign;
 	public:
 		Form();
 		Form(Form & cp);
-		Form(std::string const name, bool signature, int const _gradeExec, int const _GradeSign);
+		Form(std::string name, int gradeExec, int gradeSign);
 		~Form();
 		
-		std::string const	getName();
-		bool				getSignature();
-		int const			getGradeExec();
-		int const			getradeSign();
+		std::string 		getName() const;
+		bool				getSignature() const;
+		int					getGradeExec() const;
+		int					getGradeSign() const;
 
 		void beSigned(Bureaucrat &inst);
 
