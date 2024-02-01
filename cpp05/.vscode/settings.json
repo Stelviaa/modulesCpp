@@ -60,6 +60,7 @@
 		"vector": "cpp",
 		"*.tcc": "cpp",
 		"cinttypes": "cpp",
-		"hashtable": "cpp"
+		"hashtable": "cpp",
+		"fstream": "cpp"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 11:58:54 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/01 13:38:35 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:28:48 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,28 @@
 
 int main(void)
 {
-    Bureaucrat john;
-	Bureaucrat johnny("johnny", 150);
-	Form		formJohnny("formJohnny", 45, 33);
-	Form		formJohn("formJohn", 45, 68);
-	std::cout << formJohnny << std::endl;
-	std::cout << formJohn << std::endl;
-	formJohnny.beSigned(johnny);
-	formJohn.beSigned(john);
-	std::cout << formJohnny << std::endl;
-	std::cout << formJohn << std::endl;
-	johnny.signForm(formJohnny);
-	john.signForm(formJohn);
-	john.decrementGrade();
-	std::cout << john;
-	for (int i = 0; i < 150; i ++)
-		john.incrementGrade();
-	std::cout << john;
-	john.decrementGrade();
-	std::cout << john;
+	Bureaucrat tester("Tester", 137);
+	tester.setGrade(0);
+	tester.setGrade(151);
+	
+    ShrubberyCreationForm a("cible");
+	a.execute(tester);
+	a.beSigned(tester);
+	a.execute(tester);
+
+	tester.setGrade(45);
+	
+	RobotomyRequestForm b("cible");
+	b.execute(tester);
+	b.beSigned(tester);
+	b.execute(tester);
+	
+	tester.setGrade(5);
+	PresidentialPardonForm c("cible");
+	c.execute(tester);
+	c.beSigned(tester);
+	c.execute(tester);
+
+	Bureaucrat tester2("tester", 1);
+	tester2.executeForm(c);
 }

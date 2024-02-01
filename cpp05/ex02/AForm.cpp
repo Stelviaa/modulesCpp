@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:41:17 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/01 13:37:28 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:27:03 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "Bureaucrat.hpp"
 #endif
 
-Form::Form() : _name("defaultName"), _signature(false), _gradeExec(1), _gradeSign(1)
+AForm::AForm() : _name("defaultName"), _signature(false), _gradeExec(1), _gradeSign(1)
 {
-	std::cout << "Form: Default Constructor called" << std::endl;
+	std::cout << "AForm: Default Constructor called" << std::endl;
 }
-Form::Form(std::string name, int gradeExec, int gradeSign) : _name(name), _signature(false), _gradeExec(gradeExec), _gradeSign(gradeSign)
+AForm::AForm(std::string name, int gradeExec, int gradeSign) : _name(name), _signature(false), _gradeExec(gradeExec), _gradeSign(gradeSign)
 {
 	std::cout << "Assignation Constructor called" << std::endl;
 	try{
@@ -46,7 +46,7 @@ Form::Form(std::string name, int gradeExec, int gradeSign) : _name(name), _signa
 		std::cerr << this->_name << ": gradeSign: " << e.what() << std::endl;
 	}
 }
-Form::Form(Form & cp) : _name(cp._name), _signature(false), _gradeExec(cp._gradeExec), _gradeSign(cp._gradeSign)
+AForm::AForm(AForm & cp) : _name(cp._name), _signature(false), _gradeExec(cp._gradeExec), _gradeSign(cp._gradeSign)
 {
 	std::cout << "Copy Constructor called" << std::endl;
 	try{
@@ -75,48 +75,58 @@ Form::Form(Form & cp) : _name(cp._name), _signature(false), _gradeExec(cp._grade
 	}
 }
 
-std::string		Form::getName() const{
+void	AForm::execute(Bureaucrat const & executor) const{
+	(void) executor;
+	std::cout << "not action to make" << std::endl;
+}
+
+std::string		AForm::getName() const{
 	return (this->_name);
 }
-bool				Form::getSignature() const
+bool				AForm::getSignature() const
 {
 	return (this->_signature);
 }
-int			Form::getGradeExec() const
+int			AForm::getGradeExec() const
 {
 	return (this->_gradeExec);
 }
-int			Form::getGradeSign() const{
+int			AForm::getGradeSign() const{
 	return (this->_gradeSign);
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "Default destructor called" << std::endl;
 }
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high");
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
 }
 
-Form &Form::operator=(Form & cp){
+const char* AForm::IsSigned::what() const throw()
+{
+	return ("form isn't signed");
+}
+
+AForm &AForm::operator=(AForm & cp){
 	this->_signature = cp.getSignature();
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &out, Form const & cp){
+std::ostream &operator<<(std::ostream &out, AForm const & cp){
 	out << "name : " << cp.getName() << ", gradeExec : " << cp.getGradeExec() \
 	<< ", gradeSign : "  << cp.getGradeSign() << ", signature : " << (cp.getSignature() ? "true" : "false") << std::endl;
 	return (out);
 }
 
-void Form::beSigned(Bureaucrat &inst)
+void AForm::beSigned(Bureaucrat &inst)
 {
 	try {
 		if (inst.getGrade() > this->_gradeExec)
