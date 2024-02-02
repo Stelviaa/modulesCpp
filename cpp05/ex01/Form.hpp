@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:06:41 by sforesti          #+#    #+#             */
-/*   Updated: 2024/01/31 13:35:30 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:47:14 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ class Form{
 
 		void beSigned(Bureaucrat &inst);
 
-		class GradeTooHighException : std::exception{
+		class GradeTooHighException : public std::exception{
 			public:
 				virtual const char* what() const throw();
 		};
 
-		class GradeTooLowException : std::exception{
+		class GradeTooLowException : public std::exception{
 			public:
 				virtual const char* what() const throw();
 		};

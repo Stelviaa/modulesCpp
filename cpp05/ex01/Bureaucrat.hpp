@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:43:43 by sforesti          #+#    #+#             */
-/*   Updated: 2024/01/31 12:43:49 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:08:59 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ class Bureaucrat{
 		~Bureaucrat();
 		Bureaucrat &operator=(Bureaucrat const & cp);
 
-		void	signForm(Form &form);
+		void signForm(Form & Form);
 
-		class GradeTooHighException : std::exception{
+		class GradeTooHighException : public std::exception{
 			public:
 				virtual const char* what() const throw();
 		};
 
-		class GradeTooLowException : std::exception{
+		class GradeTooLowException : public std::exception{
 			public:
 				virtual const char* what() const throw();
 		};

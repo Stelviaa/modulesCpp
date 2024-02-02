@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 11:58:54 by sforesti          #+#    #+#             */
-/*   Updated: 2024/01/29 16:11:03 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:47:25 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 
 int main(void)
 {
-    Bureaucrat john;
-	Bureaucrat johnny("johnny", 151);
+	try {
+    	Bureaucrat john;
+		Bureaucrat johnny("johnny", 150);
 
-	std::cout << johnny << std::endl;
-	john.decrementGrade();
-	std::cout << john;
-	for (int i = 0; i < 150; i ++)
-		john.incrementGrade();
-	std::cout << john;
-	john.decrementGrade();
-	std::cout << john;
+		std::cout << johnny << std::endl;
+		std::cout << john << std::endl;
+
+		//john.decrementGrade();
+		//std::cout << john << std::endl;
+		johnny.incrementGrade();
+		std::cout << johnny << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

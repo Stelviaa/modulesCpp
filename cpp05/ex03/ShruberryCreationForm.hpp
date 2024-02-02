@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ShruberryCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 11:58:54 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 17:59:01 by sforesti         ###   ########.fr       */
+/*   Created: 2024/02/01 13:45:54 by sforesti          #+#    #+#             */
+/*   Updated: 2024/02/01 17:03:44 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 #include "Bureaucrat.hpp"
 #endif
 
-int main(void)
-{
-	try
-	{
-		Bureaucrat	John("John", 150);
-		Form		JohnForm("JohnForm", 130, 0);
+class ShrubberyCreationForm : public AForm {
+	
+	private:
+		std::string _target;
+	public:
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string target);
+		virtual ~ShrubberyCreationForm();
 		
-		JohnForm.beSigned(John);
-		John.signForm(JohnForm);
-	}
-	catch(std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-}
+		virtual	void	execute(Bureaucrat const & executor) const;
+};
