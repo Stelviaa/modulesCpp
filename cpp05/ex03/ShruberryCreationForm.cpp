@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:19:31 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 18:16:56 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:30:55 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : _target("no_target"){
 	std::cout << "SCF: Default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("scf", 137, 145), _target(target){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("scf", 137, 145), _target(target){
 	std::cout << "SCF: Assignation constructor called" << std::endl;
 }
 

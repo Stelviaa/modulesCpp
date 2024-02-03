@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:19:31 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 18:16:31 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:31:04 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm() : _target("no_target"){
 	std::cout << "RRF: Default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("rrf", 45, 72), _target(target){
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("rrf", 45, 72), _target(target){
 	std::cout << "RRF: Assignation constructor called" << std::endl;
 }
 

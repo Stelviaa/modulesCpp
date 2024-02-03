@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:45:54 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/01 17:34:45 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:44:54 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 #endif
 
-class RobotomyRequestForm : public AForm {
+class RobotomyRequestForm : public Form {
 	
 	private:
 		std::string _target;

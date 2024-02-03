@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 11:58:54 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 18:25:31 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:54:24 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,29 @@
 
 int main(void)
 {
+	Form *scf;
+	Form *rrf;
+	Form *ppf;
+	Form *bad;
 	try {
-		Bureaucrat tester("Tester", 137);
-		//tester.setGrade(0);
-		//tester.setGrade(151);
-		
-		ShrubberyCreationForm a("cible");
-		//b.execute(tester);
-		a.beSigned(tester);
-		a.execute(tester);
 
-		tester.setGrade(45);
+		Intern slave;
 		
-		RobotomyRequestForm b("cible");
-		//b.execute(tester);
-		b.beSigned(tester);
-		b.execute(tester);
-		
-		tester.setGrade(5);
-		PresidentialPardonForm c("cible");
-		//c.execute(tester);
-		c.beSigned(tester);
-		c.execute(tester);
-
-		Bureaucrat tester2("tester", 1);
-		tester2.executeForm(c);
+		scf = slave.makeForm("scf", "Shruberry");
+		rrf = slave.makeForm("rrf", "Robot");
+		ppf = slave.makeForm("ppf", "President");
+		bad = slave.makeForm("s", "bad");
 	}
 	catch (std::exception & e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	if (scf != NULL)
+		delete scf;
+	if (rrf != NULL)
+		delete rrf;
+	if (ppf != NULL)
+		delete ppf;
+	if (bad != NULL)
+		delete bad;
 }

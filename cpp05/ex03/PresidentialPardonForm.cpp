@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:14:57 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 18:05:43 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:44:47 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ PresidentialPardonForm::PresidentialPardonForm() : _target("no_target"){
 	std::cout << "PPF: Default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("ppf", 25, 5), _target(target){
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("ppf", 25, 5), _target(target){
 	std::cout << "PPF: Assignation constructor called" << std::endl;
 }
 

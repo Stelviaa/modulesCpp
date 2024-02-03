@@ -6,17 +6,18 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:43:43 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 18:14:21 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:44:36 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "ShruberryCreationForm.hpp"
 #include "RobotomyRequest.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <fstream>
 #include <exception>
 #endif
@@ -39,8 +40,8 @@ class Bureaucrat{
 		~Bureaucrat();
 		Bureaucrat &operator=(Bureaucrat const & cp);
 
-		void signForm(AForm & Form);
-		void executeForm(AForm const & form);
+		void signForm(Form & Form);
+		void executeForm(Form const & form);
 
 		class GradeTooHighException : public std::exception{
 			public:

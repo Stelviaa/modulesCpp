@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:13:51 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 18:03:12 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:44:51 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 #endif
 
-class PresidentialPardonForm : public AForm {
+class PresidentialPardonForm : public Form {
 	
 	private:
 		std::string _target;

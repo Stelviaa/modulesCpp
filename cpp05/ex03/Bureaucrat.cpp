@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 11:33:33 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/02 18:13:59 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:44:32 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 }
 
 
-void Bureaucrat::signForm(AForm & form){
+void Bureaucrat::signForm(Form & form){
 	if (form.getSignature())
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	else
@@ -100,7 +100,7 @@ void Bureaucrat::signForm(AForm & form){
 	}
 }
 
-void Bureaucrat::executeForm(AForm const & form)
+void Bureaucrat::executeForm(Form const & form)
 {
 	form.execute(*this);
 	std::cout << this->_name << " executed " << form.getName() << std::endl;
