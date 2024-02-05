@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/04 18:59:17 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:45:55 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,25 @@ std::string chooseType(std::string s){
 		return ("int");
 	if (s == "-inff" || s == "+inff" || s == "nanf" || s == "-inf" || s == "+inf" || s == "nan")
 		return (s);
-	if (std::all_of(s.begin(), s.end(), ::isalpha))
-		return ("char");
 	return ("0");
 }
 
 void	*ScalarConverter::convert(char *str){
 	std::string s(str);
+	void *cast;
 	if (chooseType(s) == "int"){
-		std::cout << "char: " << "Not Displayable" << std::endl;
-		std::cout << "int: " << static_cast<int>(str) << std::endl;
+		cast = reinterpret_cast<void *>(str);
+		std::cout << "int: " << s << std::endl;
+		std::cout << "double: " << *reinterpret_cast<double*>(cast) << std::endl;
+	}
+	if (chooseType(s) == "0")
+	{
+		if (s.size() != 1)
+			throw BadType();
+		std::cout << "char : '" << s << "'" << std::endl;
+		std::cout << "int :" << static_cast<int>(*str) << std::endl;
+		std::cout << "float :" << static_cast<float>(*str) << "f" << std::endl;
+		std::cout << "double :" << static_cast<double>(*str) << "" << std::endl;
 	}
 	return (NULL);
 }
@@ -57,4 +66,8 @@ void	*ScalarConverter::convert(char *str){
 ScalarConverter & ScalarConverter::operator=(ScalarConverter & cp){
 	(void) cp;
 	return (*this);
+}
+
+const char *ScalarConverter::BadType::what() const throw(){
+	return ("Bad type. Please enter char, int, float, or double.");
 }

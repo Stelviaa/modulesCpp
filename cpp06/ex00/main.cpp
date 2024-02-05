@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:30 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/04 18:58:18 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:17:46 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int main(int ac, char **av){
 		std::cout << "Bad number of arguments" << std::endl;
 		return (1);
 	}
-	ScalarConverter a;
-	a.convert(av[1]);
+	try{
+		ScalarConverter::convert(av[1]);
+	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
