@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/05 23:23:40 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/05 23:36:00 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ std::string chooseType(std::string s){
 	if (std::all_of((s[0] == '+' || s[0] == '-' ? s.begin() + 1 : s.begin()), s.end(), ::isdigit))
 		return ("int");
 	if (s == "-inff" || s == "+inff" || s == "nanf" || s == "-inf" || s == "+inf" || s == "nan")
-		return (s);
+		return ("1");
+	if (s.size() == 1)
+		return ("char");
 	return ("0");
 }
 
@@ -86,11 +88,6 @@ void ScalarConverter::toDouble(std::string s){
 void ScalarConverter::toChar(std::string s){
 		char c;
 		
-		if (s.size() != 1)
-		{
-			std::cout << "Bad type. Please enter char, int, float, or double." << std::endl;
-			return ;
-		}
 		c = s[0];
 		if (c <= 31 || c >= 127)
 			std::cout << "char : " << "impossible" << std::endl;
@@ -107,7 +104,7 @@ std::string ScalarConverter::convert(char *str){
 	
 	if (s == "0" || s == "+0" || s == "-0")
 	{
-		int value = std::stoi(s);
+		int value =  std::stoi(s);
 		std::cout << "char : impossible" << std::endl;
 		if (s == "-0")
 		{
@@ -121,32 +118,32 @@ std::string ScalarConverter::convert(char *str){
 			std::cout << "double: +" << static_cast<double>(value) << ".0" << std::endl;
 			std::cout << "float : +" << static_cast<float>(value) << ".0f" << std::endl;
 		}
-		else
-		{
-			std::cout << "int: " << value << std::endl;
-			std::cout << "double: " << static_cast<double>(value) << ".0" << std::endl;
-			std::cout << "float : " << static_cast<float>(value) << "f" << std::endl;
-		}
-		return ("a");
+		std::cout << "int: " << value << std::endl;
+		std::cout << "double: " << static_cast<double>(value) << (s.find("e") ? "\0" : ".0") << std::endl;
+		std::cout << "float : " << static_cast<float>(value) << "f" << std::endl;
+	}
+	else if (chooseType(s) == "int")
+		ScalarConverter::toInt(s);
+	else if (chooseType(s) == "double")
+		ScalarConverter::toDouble(s);
+	else if (chooseType(s) == "float")
+		ScalarConverter::toFloat(s);
+	else if (chooseType(s) == "char")
+		ScalarConverter::toChar(s);
+	else if (chooseType(s) == "1")
+	{
+		
 	}
 	else if (chooseType(s) == "0")
-	{
-		ScalarConverter::toChar(s);
-		return ("a");
-	}else if (chooseType(s) == "int"){
-		ScalarConverter::toInt(s);
-		return ("a");
-	}else if (chooseType(s) == "double"){
-		ScalarConverter::toDouble(s);
-		return ("a");
-	}else if (chooseType(s) == "float"){
-		ScalarConverter::toFloat(s);
-		return ("a");
-	}
-	return ("b");
+		return ("0");	
+	return ("1");
 }
 
 ScalarConverter & ScalarConverter::operator=(ScalarConverter & cp){
 	(void) cp;
 	return (*this);
+}
+
+const char *ScalarConverter::BadType::what() const throw(){
+	return ("Bad type. Please enter char, int, float, or double.");
 }
