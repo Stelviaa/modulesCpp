@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/05 23:36:00 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/05 23:48:15 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void ScalarConverter::toInt(std::string s){
 	else
 		std::cout << "char : '" << static_cast<char>(value) << "'" << std::endl;
 	std::cout << "int: " << value << std::endl;
-	std::cout << "double: " << static_cast<double>(value) << (s.find("e") ? "\0" : ".0") << std::endl;
+	std::cout << "double: " << static_cast<double>(value) << (s.size() >= 7 ? "\0" : ".0") << std::endl;
 	std::cout << "float : " << static_cast<float>(value) << "f" << std::endl;
 }
 
@@ -82,6 +82,7 @@ void ScalarConverter::toDouble(std::string s){
 	for (i = s.find(".") + 1; i < s.size() && s[i] == '0'; i++);
 	std::cout << "int: " << static_cast<int>(value) << std::endl;
 	std::cout << "double: " << value << (i == s.size() ? ".0" : "\0") << std::endl;
+	std::cout << i <<" " <<  s.size() <<std::endl;
 	std::cout << "float : " << static_cast<float>(value) << (i == s.size() ? ".0f" : "f") << std::endl;
 }
 
@@ -142,8 +143,4 @@ std::string ScalarConverter::convert(char *str){
 ScalarConverter & ScalarConverter::operator=(ScalarConverter & cp){
 	(void) cp;
 	return (*this);
-}
-
-const char *ScalarConverter::BadType::what() const throw(){
-	return ("Bad type. Please enter char, int, float, or double.");
 }
