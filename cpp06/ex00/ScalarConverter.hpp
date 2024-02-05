@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:35 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/05 18:18:01 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/05 23:18:49 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ class ScalarConverter{
 		ScalarConverter(ScalarConverter & cp);
 	public:
 		~ScalarConverter();
-		static void	*convert(char *str);
+		static std::string convert(char *str);
 
 		ScalarConverter & operator=(ScalarConverter & cp);
-		
-		class BadType : public std::exception{
-			virtual const char* what() const throw(); 	
-		};
+
+		static void toFloat(std::string s);
+		static void toInt(std::string s);
+		static void toDouble(std::string s); 
+		static void toChar(std::string s); 
 };
 
 std::string chooseType(std::string s);
