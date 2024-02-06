@@ -6,9 +6,11 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:02:13 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/06 18:31:58 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/06 22:27:56 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <iostream>
 
 template<typename T>
 class Array{
@@ -17,33 +19,41 @@ class Array{
 		T 				*_element;
 		unsigned int	_size;
 	public:
-		Array() : _elements(NULL), _size(0);
-		Array(unsigned int n) : _element(new T[n]), _size(n);
+		Array() : _element(NULL), _size(0){
+			std::cout << "Default constructor called" << std::endl;
+		}
+		Array(unsigned int n) : _element(new T[n]), _size(n){
+			std::cout << "Assignation constructor called" << std::endl;
+		}
 		Array(const Array & cp) : _size(cp._size){
+			std::cout << "Copy constructor called" << std::endl;
 			_element = new T [_size];
-			for (int i = 0; i < _size; i ++)
+			for (unsigned int i = 0; i < _size; i ++)
 				_element[i] = cp._element[i]; 
 		}
 		~Array(){
-			if (_elements != NULL)
-				delete [] T	;
+			std::cout << "Destructor Called" << std::endl;
+			if (_element != NULL) 
+				delete [] _element;
 		}
 
 		/*operator*/
 		
 		T & operator[](size_t i) const{
 			if (i >= this->_size)
-				throw (std::out_of_range("Bro, seriously ?"));
-			return (this->element[i]);
+				throw std::out_of_range("\033[1;31mError : \033[0mout of range on \"Array\"");
+			return (this->_element[i]);
 		}
-		T & operator= (const Array & cp)
+		Array & operator=(const Array & cp)
 		{
 			if (this == &cp)
 				return (*this);
-			_size = cp._size
+			_size = cp._size;
 			_element = new T [_size];
-			for (int i = 0; i < size; i ++)
+			for (unsigned int i = 0; i < _size; i ++)
 				_element[i] = cp._element[i]; 
 			return (*this);
 		}
+		/*Member function*/
+		unsigned int size() {return (_size);}
 };
