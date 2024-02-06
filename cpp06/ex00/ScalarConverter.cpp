@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/05 23:48:15 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/06 10:58:30 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ std::string chooseType(std::string s){
 		return ("float");
 	if (std::all_of((s[0] == '+' || s[0] == '-' ? s.begin() + 1 : s.begin()), s.end(), ::isdigit))
 		return ("int");
-	if (s == "-inff" || s == "+inff" || s == "nanf" || s == "-inf" || s == "+inf" || s == "nan")
+	if (s == "-inff" || s == "+inff" || s == "nanf" || s == "-inf" || s == "+inf" || s == "nan" || s == "inf" || s == "inff")
 		return ("1");
 	if (s.size() == 1)
 		return ("char");
@@ -82,7 +82,6 @@ void ScalarConverter::toDouble(std::string s){
 	for (i = s.find(".") + 1; i < s.size() && s[i] == '0'; i++);
 	std::cout << "int: " << static_cast<int>(value) << std::endl;
 	std::cout << "double: " << value << (i == s.size() ? ".0" : "\0") << std::endl;
-	std::cout << i <<" " <<  s.size() <<std::endl;
 	std::cout << "float : " << static_cast<float>(value) << (i == s.size() ? ".0f" : "f") << std::endl;
 }
 
@@ -133,7 +132,16 @@ std::string ScalarConverter::convert(char *str){
 		ScalarConverter::toChar(s);
 	else if (chooseType(s) == "1")
 	{
-		
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		if (s.find("ff") != s.npos || s == "nanf")
+			std::cout << "float: " << s << std::endl;
+		else
+			std::cout << "float: " << s + "f" << std::endl;
+		if (s == "+inf" || s == "-inf" || s == "nan" || s == "inf")
+			std::cout << "double: " << s << std:: endl;
+		else
+			std::cout << "double: " << (s.substr(0, s.size() - 1)) << std::endl;
 	}
 	else if (chooseType(s) == "0")
 		return ("0");	
