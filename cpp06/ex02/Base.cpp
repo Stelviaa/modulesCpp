@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:51:18 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/06 13:08:33 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:17:46 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,10 @@ Base::~Base()
 }
 
 Base *generate(void){
-	std::random_device rd;
-    std::mt19937 gen(rd());
 	Base *var = NULL;
-
-	int min = 1;
-    int max = 3;
-    std::uniform_int_distribution<int> dis(min, max);
+	std::srand(time(NULL));
 	
-	int randomValue = dis(gen);
+	int randomValue = (std::rand() % 3) + 1;
 	if (randomValue == 1)
 		var = new A();
 	else if (randomValue == 2)
