@@ -6,11 +6,15 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:46:13 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/08 17:30:42 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:38:46 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#ifndef SPAN_CPP
+#define SPAN_CPP
 #include "Span.hpp"
+#endif
 
 int main ()
 {

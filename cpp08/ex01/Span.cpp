@@ -6,12 +6,14 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:59:15 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/08 17:31:22 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:38:36 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SPAN_CPP
+#define SPAN_CPP
 #include "Span.hpp"
-
+#endif
 Span::Span()
 {
     std::cout << "Default constructor called" << std::endl;

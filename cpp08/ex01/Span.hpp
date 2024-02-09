@@ -6,13 +6,16 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:32:55 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/08 16:28:19 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:37:39 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SPAN_HPP
+#define SPAN_HPP
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#endif
 
 class Span {
 

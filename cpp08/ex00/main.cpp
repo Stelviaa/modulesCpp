@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sforesti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:25:49 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/07 19:25:49 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:33:08 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MAIN
+#define MAIN
 #include "easyfind.hpp"
+#endif
 
 template<typename T>
 T pushValue(T container)
