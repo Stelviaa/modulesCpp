@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:19:31 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/03 13:30:55 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/09 10:00:54 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
 		if (executor.getGrade() <= this->_gradeExec && executor.getGrade() <= this->_gradeSign)
 		{
 			std::string name = this->_target + "_shrubberry";
-			std::ofstream ofs(name);
+			std::ofstream ofs(name.c_str());
 			ofs << "\033[38;5;70m"
 			<< "    /////  " << std::endl
 			<< "   /////// " << std::endl
