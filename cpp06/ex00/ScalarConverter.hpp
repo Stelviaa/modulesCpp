@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:35 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/05 23:39:33 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:17:01 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #define SCALAR_CONVERTER_HPP
 #include <iostream>
 #include <cctype>
-#include <algorithm>
 #include <exception>
+#include <cstdlib>
+#include <sstream>
+#include <limits>
 #endif
 
 class ScalarConverter{
