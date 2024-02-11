@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/10 16:55:39 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:13:53 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,18 @@ bool verifyOverflow(std::string s, std::string nb)
 		std::cerr << "Failure with iss" << std::endl;
 		return (false);
 	}
+	if (s == "int" || s == "float")
+	{
+		long double value;
+		iss >> value;
+		if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
+			return (false);
+	}
 	if (s == "double")
 	{
 		long double value;
 		iss >> value;
 		if (value > std::numeric_limits<double>::max() || value < std::numeric_limits<double>::min())
-			return (false);
-	}
-	else if (s == "float")
-	{
-		double value;
-		iss >> value;
-		if (value > std::numeric_limits<float>::max() || value < std::numeric_limits<float>::min())
-			return (false);
-	}
-	else if (s == "int")
-	{
-		long int value;
-		iss >> value;
-		if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
 			return (false);
 	}
 	return (true);
@@ -124,12 +117,12 @@ void ScalarConverter::toInt(std::string s){
 	else
 		std::cout << "char : '" << static_cast<char>(value) << "'" << std::endl;
 	std::cout << "int: " << value << std::endl;
-	if (value >= std::numeric_limits<double>::min() && value <= std::numeric_limits<double>::max())
-		std::cout << "double: " << static_cast<double>(value) << (s.size() >= 7 ? "\0" : ".0") << std::endl;
+	if (value <= std::numeric_limits<double>::max())
+		std::cout << "double: " << static_cast<double>(value) << ".0" << std::endl;
 	else
 		std::cout << "double : impossible" << std::endl;
-	if (value >= std::numeric_limits<float>::min() && value <= std::numeric_limits<float>::max())
-		std::cout << "float : " << static_cast<float>(value) << (s.size() >= 7 ? "f" : ".0f")<< std::endl;
+	if (value <= std::numeric_limits<float>::max())
+		std::cout << "float : " << static_cast<float>(value) << ".0f" << std::endl;
 	else
 		std::cout << "float : impossible" << std::endl;
 }
@@ -158,11 +151,11 @@ void ScalarConverter::toFloat(std::string s){
 		i = 1;
 	else
 		i = 0;
-	if (value >= std::numeric_limits<double>::min() && value <= std::numeric_limits<double>::max())
+	if (value <= std::numeric_limits<double>::max())
 		std::cout << "double: " << static_cast<double>(value) << (i == 1 ? ".0" : "\0") << std::endl;
 	else
 		std::cout << "double : impossible" << std::endl;
-	if (value >= std::numeric_limits<float>::min() && value <= std::numeric_limits<float>::max())
+	if (value <= std::numeric_limits<float>::max())
 		std::cout << "float : " << value << (i == 1? ".0f" : "f") << std::endl;
 	else
 		std::cout << "float : impossible" << std::endl;
@@ -178,20 +171,20 @@ void ScalarConverter::toDouble(std::string s){
 		std::cerr << "Failure with iss" << std::endl;
 		return ;
 	}
-	if (value <= 31.9999 || value >= 127)
+	if (value < 32 || value >= 127)
 		std::cout << "char : " << "impossible" << std::endl;
 	else
 		std::cout << "char : '" << static_cast<char>(value) << "'" << std::endl;
 	for (i = s.find(".") + 1; i < s.size() && s[i] == '0'; i++);
-	if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max())
+	if (value <= std::numeric_limits<int>::max() && (value >= std::numeric_limits<int>::min()))
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
 	else
 		std::cout << "int : impossible" << std::endl;
-	if (value >= std::numeric_limits<double>::min() && value <= std::numeric_limits<double>::max())
-		std::cout << "double: " << value << (i == s.size() && s.find('.') == s.npos ? ".0" : "\0") << std::endl;
+	if (value <= std::numeric_limits<double>::max())
+		std::cout << "double: " << value << (s[s.size() - 1] == '.' || s.find('.') == s.npos || (s[s.size() - 2] == '.' && s[s.size() - 1] == '0')? ".0" : "\0") << std::endl;
 	else
 		std::cout << "double: impossible" << std::endl;
-	if (value >= std::numeric_limits<float>::min() && value <= std::numeric_limits<float>::max())
+	if (value <= std::numeric_limits<float>::max() && (value >= std::numeric_limits<float>::min()))
 		std::cout << "float : " << static_cast<float>(value) << (i == s.size() ? ".0f" : "f") << std::endl;
 	else
 		std::cout << "float : impossible" << std::endl;
@@ -259,7 +252,6 @@ std::string ScalarConverter::convert(char *str){
 	}
 	else if (chooseType(s) == "0")
 		return ("0");
-	std::cout << chooseType(s) << std::endl;
 	return ("1");
 }
 
