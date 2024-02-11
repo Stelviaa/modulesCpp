@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 15:13:45 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/09 16:37:11 by sforesti         ###   ########.fr       */
+/*   Created: 2024/02/11 12:02:34 by sforesti          #+#    #+#             */
+/*   Updated: 2024/02/11 13:43:51 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE_HPP
+#ifndef MAIN
+#define MAIN
 #include "BitcoinExchange.hpp"
 #endif
 
-std::map<int, float> parsing(std::string fileName, std::string caractere){
-    std::ifstream file(fileName.c_str());
-    if (!file.is_open())
-        throw std::runtime_error("File not open");
-    std::string content;
-    std::map<int, float> data;
-    while (std::getline(file, content, '\n'))
+int main(int ac, char **av)
+{
+    if (ac != 2)
     {
-        std::all_of(content.begin(), )
-        data.insert(std::stoi(std::all_of()))
+        std::cerr << "bad number of arguments" << std::endl;
+        return (1);
     }
+    std::string s(av[1]);
+    compare(s);
 }
