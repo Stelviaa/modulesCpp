@@ -1,27 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 12:02:34 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/11 15:46:30 by sforesti         ###   ########.fr       */
+/*   Created: 2024/02/11 14:59:00 by sforesti          #+#    #+#             */
+/*   Updated: 2024/02/11 15:31:16 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN
-#define MAIN
-#include "BitcoinExchange.hpp"
+#ifndef RPN_HPP
+#define RPN_HPP
 #endif
-
-int main(int ac, char **av)
-{
-    if (ac != 2)
-    {
-        std::cerr << "bad number of arguments" << std::endl;
-        return (1);
-    }
-    std::string s(av[1]);
-    compare(s);
-}
