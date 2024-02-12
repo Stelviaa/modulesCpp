@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:13:45 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/11 14:52:08 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:58:36 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ std::map<int, float> compare(std::string fileName){
     std::map<int, float> data;
     std::string s;
     std::ifstream file(fileName.c_str());
-    if (!file.is_open())
+    if (!file.is_open())Error: 
         throw std::runtime_error("File not open");
     data = parseCsv();
     std::getline(file, s, '\n');
