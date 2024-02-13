@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:45:40 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/12 18:21:10 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:29:03 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@
 #include <iostream>
 #include <sstream>
 #include <limits>
-#include <list>
+#include <deque>
 #include <cctype>
+#include <chrono>
+#include <iomanip>
 
-void parseArguments(char **str, int ac,std::list<int> *list);
+void parseArguments(char **str, int ac,std::deque<int> *list);
 void parseArguments(char **str, int ac,std::vector<int> *vector);
-void displayContainer(std::vector<int> data);
-void displayContainer(std::list<int> data);
+void displayContainer(std::vector<int> data, std::string s);
+void displayContainer(std::deque<int> data, std::string s);
 void mainAlgo(std::vector<int> *data);
-
+void mainAlgo(std::deque<int> *data);
+void displayInformation(std::chrono::microseconds time, std::deque<int> p);
+void displayInformation(std::chrono::microseconds time, std::vector<int> p);
 #endif
