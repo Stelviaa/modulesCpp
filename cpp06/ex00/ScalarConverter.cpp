@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/26 12:05:59 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:21:29 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,13 +138,7 @@ void ScalarConverter::toFloat(std::string s){
 	
 	size_t i;
 	float value;
-	std::istringstream iss(s.c_str());
-	iss >> value;
-	if (iss.fail())
-	{
-		std::cerr << "Failure with iss" << std::endl;
-		return ;
-	}
+	value = atof(s.c_str());
 	if (value <= 31 || value >= 127)
 		std::cout << "char : " << "impossible" << std::endl;
 	else
@@ -167,13 +161,7 @@ void ScalarConverter::toFloat(std::string s){
 void ScalarConverter::toDouble(std::string s){
 	size_t i;
 	double value;
-	std::istringstream iss(s.c_str());
-	iss >> value;
-	if (iss.fail())
-	{
-		std::cerr << "Failure with iss" << std::endl;
-		return ;
-	}
+	value = atof(s.c_str());
 	if (value < 32 || value >= 127)
 		std::cout << "char : " << "impossible" << std::endl;
 	else
@@ -187,7 +175,6 @@ void ScalarConverter::toDouble(std::string s){
 		std::cout << "double: " << value << (s[s.size() - 1] == '.' || s.find('.') == s.npos || (s[s.size() - 2] == '.' && s[s.size() - 1] == '0')? ".0" : "\0") << std::endl;
 	else
 		std::cout << "double: impossible" << std::endl;
-	std::cout << value << std::endl;
 	if (value <= std::numeric_limits<float>::max() && (value >= std::numeric_limits<float>::min()))
 		std::cout << "float : " << static_cast<float>(value) << (i == s.size() ? ".0f" : "f") << std::endl;
 	else

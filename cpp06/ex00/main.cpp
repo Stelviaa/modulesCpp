@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:30 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/26 11:54:45 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:11:24 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "ScalarConverter.hpp"
 #endif
 int main(int ac, char **av){
-	std::cout.precision(310);
 	if (ac != 2)
 	{
 		std::cout << "Bad number of arguments" << std::endl;
