@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/11 11:13:53 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:05:59 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,18 @@ bool verifyOverflow(std::string s, std::string nb)
 		std::cerr << "Failure with iss" << std::endl;
 		return (false);
 	}
-	if (s == "int" || s == "float")
+	if (s == "int")
 	{
 		long double value;
 		iss >> value;
 		if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
+			return (false);
+	}
+	if (s == "float")
+	{
+		long double value;
+		iss >> value;
+		if (value > std::numeric_limits<float>::max() || value < std::numeric_limits<float>::min())
 			return (false);
 	}
 	if (s == "double")
@@ -147,16 +154,12 @@ void ScalarConverter::toFloat(std::string s){
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
 	else
 		std::cout << "int : impossible" << std::endl;
-	if (s[s.size()-2] == '.' || (s[s.size()-3] == '.' && s[s.size()-2] == '0') || (s.find('.') <= 6) || (s.find('.') == s.npos))
-		i = 1;
-	else
-		i = 0;
 	if (value <= std::numeric_limits<double>::max())
-		std::cout << "double: " << static_cast<double>(value) << (i == 1 ? ".0" : "\0") << std::endl;
+		std::cout << "double: " << static_cast<double>(value) << (i == s.size() ? ".0" : "\0") << std::endl;
 	else
 		std::cout << "double : impossible" << std::endl;
 	if (value <= std::numeric_limits<float>::max())
-		std::cout << "float : " << value << (i == 1? ".0f" : "f") << std::endl;
+		std::cout << "float : " << value << (s[s.size() - 1] == '.' || s.find('.') == s.npos || (s[s.size() - 2] == '.' && s[s.size() - 1] == '0')? ".0f" : "f") << std::endl;
 	else
 		std::cout << "float : impossible" << std::endl;
 }
@@ -184,6 +187,7 @@ void ScalarConverter::toDouble(std::string s){
 		std::cout << "double: " << value << (s[s.size() - 1] == '.' || s.find('.') == s.npos || (s[s.size() - 2] == '.' && s[s.size() - 1] == '0')? ".0" : "\0") << std::endl;
 	else
 		std::cout << "double: impossible" << std::endl;
+	std::cout << value << std::endl;
 	if (value <= std::numeric_limits<float>::max() && (value >= std::numeric_limits<float>::min()))
 		std::cout << "float : " << static_cast<float>(value) << (i == s.size() ? ".0f" : "f") << std::endl;
 	else
