@@ -6,11 +6,14 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:02:13 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/06 22:27:56 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:28:01 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 #include <iostream>
+#endif
 
 template<typename T>
 class Array{
@@ -39,11 +42,18 @@ class Array{
 
 		/*operator*/
 		
-		T & operator[](size_t i) const{
+		T & operator[](size_t i) {
 			if (i >= this->_size)
 				throw std::out_of_range("\033[1;31mError : \033[0mout of range on \"Array\"");
 			return (this->_element[i]);
 		}
+
+		const T & operator[](size_t i) const{
+			if (i >= this->_size)
+				throw std::out_of_range("\033[1;31mError : \033[0mout of range on \"Array\"");
+			return (this->_element[i]);
+		}
+		
 		Array & operator=(const Array & cp)
 		{
 			if (this == &cp)

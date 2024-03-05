@@ -6,11 +6,15 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:36:13 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/06 22:28:32 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:30:11 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MAIN
+#define MAIN
 #include "Array.hpp"
+#include <iostream>
+#endif
 
 int main(){
 	try {
