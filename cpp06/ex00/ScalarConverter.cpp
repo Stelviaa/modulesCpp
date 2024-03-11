@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:24:32 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/26 14:21:29 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:01:44 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,25 @@ bool verifyOverflow(std::string s, std::string nb)
 		std::cerr << "Failure with iss" << std::endl;
 		return (false);
 	}
-	if (s == "int")
+	if (s == "int" || s == "float")
 	{
-		long double value;
+		long int value;
 		iss >> value;
-		if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
+		if (value > std::numeric_limits<int>::max())
 			return (false);
 	}
 	if (s == "float")
 	{
-		long double value;
+		double value;
 		iss >> value;
-		if (value > std::numeric_limits<float>::max() || value < std::numeric_limits<float>::min())
+		if (value > std::numeric_limits<float>::max())
 			return (false);
 	}
 	if (s == "double")
 	{
 		long double value;
 		iss >> value;
-		if (value > std::numeric_limits<double>::max() || value < std::numeric_limits<double>::min())
+		if (value > std::numeric_limits<double>::max())
 			return (false);
 	}
 	return (true);
@@ -136,47 +136,58 @@ void ScalarConverter::toInt(std::string s){
 
 void ScalarConverter::toFloat(std::string s){
 	
-	size_t i;
 	float value;
-	value = atof(s.c_str());
+	std::cout << s << std::endl;
+	std::istringstream iss(s.c_str());
+	iss >> value;
+	std::cout << value << std::endl;
+	if (iss.fail())
+	{
+		std::cerr << "Failure with iss" << std::endl;
+		return ;
+	}
 	if (value <= 31 || value >= 127)
 		std::cout << "char : " << "impossible" << std::endl;
 	else
 		std::cout << "char : '" << static_cast<char>(value) << "'" << std::endl;
-	for (i = s.find(".") + 1; i < s.size() && s[i] == '0'; i++);
 	if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max())
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
 	else
 		std::cout << "int : impossible" << std::endl;
 	if (value <= std::numeric_limits<double>::max())
-		std::cout << "double: " << static_cast<double>(value) << (i == s.size() ? ".0" : "\0") << std::endl;
+		std::cout << "double: " << static_cast<double>(value) << std::endl;
 	else
 		std::cout << "double : impossible" << std::endl;
 	if (value <= std::numeric_limits<float>::max())
-		std::cout << "float : " << value << (s[s.size() - 1] == '.' || s.find('.') == s.npos || (s[s.size() - 2] == '.' && s[s.size() - 1] == '0')? ".0f" : "f") << std::endl;
+		std::cout << "float : " << value << "f" << std::endl;
 	else
 		std::cout << "float : impossible" << std::endl;
 }
 
 void ScalarConverter::toDouble(std::string s){
-	size_t i;
+	
 	double value;
-	value = atof(s.c_str());
+	std::istringstream iss(s.c_str());
+	iss >> value;
+	if (iss.fail())
+	{
+		std::cerr << "Failure with iss" << std::endl;
+		return ;
+	}
 	if (value < 32 || value >= 127)
 		std::cout << "char : " << "impossible" << std::endl;
 	else
 		std::cout << "char : '" << static_cast<char>(value) << "'" << std::endl;
-	for (i = s.find(".") + 1; i < s.size() && s[i] == '0'; i++);
 	if (value <= std::numeric_limits<int>::max() && (value >= std::numeric_limits<int>::min()))
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
 	else
 		std::cout << "int : impossible" << std::endl;
 	if (value <= std::numeric_limits<double>::max())
-		std::cout << "double: " << value << (s[s.size() - 1] == '.' || s.find('.') == s.npos || (s[s.size() - 2] == '.' && s[s.size() - 1] == '0')? ".0" : "\0") << std::endl;
+		std::cout << "double: " << value << std::endl;
 	else
 		std::cout << "double: impossible" << std::endl;
-	if (value <= std::numeric_limits<float>::max() && (value >= std::numeric_limits<float>::min()))
-		std::cout << "float : " << static_cast<float>(value) << (i == s.size() ? ".0f" : "f") << std::endl;
+	if (value <= std::numeric_limits<float>::max())
+		std::cout << "float : " << static_cast<float>(value) << "f" << std::endl;
 	else
 		std::cout << "float : impossible" << std::endl;
 }

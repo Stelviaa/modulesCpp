@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:05:02 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/06 11:18:35 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:24:37 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SERIALIZER_HPP
 #include <iostream>
 #include <exception>
+#include <stdint.h>
 #endif
 
 struct Data{
