@@ -2,9 +2,9 @@ SRCS = main.cpp PmergeMe.cpp
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++11
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = PmergeMe
+NAME = PmergeMe 
 
 
 RM = rm -f
@@ -17,7 +17,7 @@ OBJS = $(SRCS:.cpp=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-			$(CC) -o $(NAME) $(OBJS)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 debug: CFLAGS+=-g
 debug: re

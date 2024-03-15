@@ -1,4 +1,4 @@
-SRCS = main.cpp BitcoinExchange.cpp 
+SRCS = main.cpp BitcoinExchange.cpp
 
 CC = c++
 
@@ -17,7 +17,7 @@ OBJS = $(SRCS:.cpp=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-			$(CC) -o $(NAME) $(OBJS)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 debug: CFLAGS+=-g
 debug: re

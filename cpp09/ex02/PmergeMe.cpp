@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 12:46:16 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/13 15:29:45 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:59:54 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,9 +167,11 @@ void addElement(std::deque<int> *data, std::deque<int> *pend)
 void mainAlgo(std::vector<int> *data)
 {
     std::vector<int>::iterator exportedValue;
+    bool oddNumber = false;
     if (data->size() % 2)
     {
         exportedValue = (data->end() - 1);
+        oddNumber = true;
         data->pop_back();
     }
     std::vector<std::vector<int>> parent;
@@ -200,14 +202,22 @@ void mainAlgo(std::vector<int> *data)
     data->insert(data->begin(),parent[0][0]);
     while (!pend.empty())
         addElement(data, &pend);
+    std::vector<int> lastValue(1);
+    if (oddNumber)
+    {
+        lastValue.push_back(*(exportedValue));
+        addElement(data, &lastValue);
+    }
 }
 
 void mainAlgo(std::deque<int> *data)
 {
     std::deque<int>::iterator exportedValue;
+    bool oddNumber = false;
     if (data->size() % 2)
     {
         exportedValue = (data->end() - 1);
+        oddNumber = true;
         data->pop_back();
     }
     std::deque<std::deque<int>> parent;
@@ -238,12 +248,18 @@ void mainAlgo(std::deque<int> *data)
     data->insert(data->begin(),parent[0][0]);
     while (!pend.empty())
         addElement(data, &pend);
+    std::deque<int> lastValue(1);
+    if (oddNumber)
+    {
+        addElement(data, &lastValue);
+        lastValue.push_back(*(exportedValue));
+    }
 }
 
 
 void displayInformation(std::chrono::microseconds time, std::deque<int> p){
     
-    std::cout << "Time to process a range of " << p.size() << " elements with std::list<int> : " << time.count() << " us" << std::endl;
+    std::cout << "Time to process a range of " << p.size() << " elements with std::deque<int> : " << time.count() << " us" << std::endl;
 }
 void displayInformation(std::chrono::microseconds time, std::vector<int> p){
     std::cout << "Time to process a range of " << p.size() << " elements with std::vector<int> : " << time.count() << " us" << std::endl;

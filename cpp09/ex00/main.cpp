@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:02:34 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/11 15:46:30 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:11:39 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int main(int ac, char **av)
         std::cerr << "bad number of arguments" << std::endl;
         return (1);
     }
-    std::string s(av[1]);
-    compare(s);
+    try {
+        std::string s(av[1]);
+        compare(s);
+    }
+    catch (std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }

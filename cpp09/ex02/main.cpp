@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:58:33 by sforesti          #+#    #+#             */
-/*   Updated: 2024/02/13 15:33:12 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:55:58 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main (int ac, char **av)
         std::chrono::time_point<std::chrono::high_resolution_clock> endTimel = std::chrono::high_resolution_clock::now();
         displayContainer(p, "After : ");
         displayInformation(std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime), p);
-        displayInformation(std::chrono::duration_cast<std::chrono::microseconds>(endTimel - startTimel), p);  
+        displayInformation(std::chrono::duration_cast<std::chrono::microseconds>(endTimel - startTimel), l);  
     }
     catch (std::exception & e) {
         std::cout << e.what() << std::endl;
