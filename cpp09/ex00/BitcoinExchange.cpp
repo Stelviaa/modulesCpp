@@ -114,6 +114,8 @@ std::map<int, float> compare(std::string fileName){
             {
                 if (it->first > exportDate(s))
                 {
+                    if (it->first != exportDate(s))
+                        it --;
                     std::cout << "\033[0;32m" << s.substr(0, s.find('|')) << "=> " \
                     << exportValue(s) << " = " << exportValue(s) * it->second << "\033[0m" << std::endl;
                     break;

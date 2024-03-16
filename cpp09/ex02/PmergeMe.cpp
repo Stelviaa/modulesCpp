@@ -51,7 +51,7 @@ void parseArguments(char **str, int ac, std::deque<int> *data)
     }
 }
 
-void recursiveSort(std::vector<std::vector<int>>& parent, size_t startIndex) {
+void recursiveSort(std::vector<std::vector<int> >& parent, size_t startIndex) {
     if (startIndex >= parent.size() - 1)
         return ;
     size_t minIndex = startIndex;
@@ -66,7 +66,7 @@ void recursiveSort(std::vector<std::vector<int>>& parent, size_t startIndex) {
     recursiveSort(parent, startIndex + 1);
 }
 
-void recursiveSort(std::deque<std::deque<int>>& parent, size_t startIndex) {
+void recursiveSort(std::deque<std::deque<int> >& parent, size_t startIndex) {
     if (startIndex >= parent.size() - 1)
         return ;
     size_t minIndex = startIndex;
@@ -174,7 +174,7 @@ void mainAlgo(std::vector<int> *data)
         oddNumber = true;
         data->pop_back();
     }
-    std::vector<std::vector<int>> parent;
+    std::vector<std::vector<int> > parent;
     std::vector<int>::iterator nb = data->begin();
     for (size_t i = 0; i < data->size() / 2; i++)
     {
@@ -220,7 +220,7 @@ void mainAlgo(std::deque<int> *data)
         oddNumber = true;
         data->pop_back();
     }
-    std::deque<std::deque<int>> parent;
+    std::deque<std::deque<int> > parent;
     std::deque<int>::iterator nb = data->begin();
     for (size_t i = 0; i < data->size() / 2; i++)
     {
@@ -257,10 +257,10 @@ void mainAlgo(std::deque<int> *data)
 }
 
 
-void displayInformation(std::chrono::microseconds time, std::deque<int> p){
+void displayInformation(suseconds_t time, std::deque<int> p){
     
-    std::cout << "Time to process a range of " << p.size() << " elements with std::deque<int> : " << time.count() << " us" << std::endl;
+    std::cout << "Time to process a range of " << p.size() << " elements with std::deque<int> : " << time << " us" << std::endl;
 }
-void displayInformation(std::chrono::microseconds time, std::vector<int> p){
-    std::cout << "Time to process a range of " << p.size() << " elements with std::vector<int> : " << time.count() << " us" << std::endl;
+void displayInformation(suseconds_t time, std::vector<int> p){
+    std::cout << "Time to process a range of " << p.size() << " elements with std::vector<int> : " << time << " us" << std::endl;
 }

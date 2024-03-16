@@ -19,7 +19,7 @@
 #include <limits>
 #include <deque>
 #include <cctype>
-#include <chrono>
+#include <sys/time.h>
 #include <iomanip>
 
 void parseArguments(char **str, int ac,std::deque<int> *list);
@@ -28,6 +28,6 @@ void displayContainer(std::vector<int> data, std::string s);
 void displayContainer(std::deque<int> data, std::string s);
 void mainAlgo(std::vector<int> *data);
 void mainAlgo(std::deque<int> *data);
-void displayInformation(std::chrono::microseconds time, std::deque<int> p);
-void displayInformation(std::chrono::microseconds time, std::vector<int> p);
+void displayInformation(suseconds_t time, std::deque<int> p);
+void displayInformation(suseconds_t time, std::vector<int> p);
 #endif

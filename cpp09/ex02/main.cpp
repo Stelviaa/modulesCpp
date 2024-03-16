@@ -20,19 +20,23 @@ int main (int ac, char **av)
     }
     try {
         std::vector<int> p;
+        std::vector<int> display;
         std::deque<int> l;
+        timeval preTime;
+        timeval afterTime;
+        parseArguments(av, ac, &display);
+        displayContainer(display, "Before: ");
+        gettimeofday(&preTime, NULL);
         parseArguments(av, ac, &p);
-        parseArguments(av, ac, &l);
-        displayContainer(p, "Before: ");
-        std::chrono::time_point<std::chrono::high_resolution_clock> startTime = std::chrono::high_resolution_clock::now();
         mainAlgo(&p);
-        std::chrono::time_point<std::chrono::high_resolution_clock> endTime = std::chrono::high_resolution_clock::now();
-        std::chrono::time_point<std::chrono::high_resolution_clock> startTimel = std::chrono::high_resolution_clock::now();
-        mainAlgo(&l);
-        std::chrono::time_point<std::chrono::high_resolution_clock> endTimel = std::chrono::high_resolution_clock::now();
+        gettimeofday(&afterTime, NULL);
         displayContainer(p, "After : ");
-        displayInformation(std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime), p);
-        displayInformation(std::chrono::duration_cast<std::chrono::microseconds>(endTimel - startTimel), l);  
+        displayInformation(afterTime.tv_usec - preTime.tv_usec, p);
+        gettimeofday(&preTime, NULL);
+        parseArguments(av, ac, &l);
+        mainAlgo(&l);
+        gettimeofday(&afterTime, NULL);
+        displayInformation(afterTime.tv_usec - preTime.tv_usec, l);
     }
     catch (std::exception & e) {
         std::cout << e.what() << std::endl;
