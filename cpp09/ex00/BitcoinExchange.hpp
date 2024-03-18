@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:30:16 by sforesti          #+#    #+#             */
-/*   Updated: 2024/03/15 16:06:46 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:38:13 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <fstream>
 #include <sstream>
 #include <exception>
+#include <algorithm>
 #endif
 
 std::map<int, float> compare(std::string FileName);

@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:58:33 by sforesti          #+#    #+#             */
-/*   Updated: 2024/03/15 16:14:48 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:16:10 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main (int ac, char **av)
                 data.push(b - a);
             continue ;
         }
-        if (exportValue(value) <= 9 || exportValue(value) >= 0)
+        if (s[i] <= '9' && s[i] >= '0')
         {
             data.push(exportValue(value));
             continue ;

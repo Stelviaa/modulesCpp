@@ -6,7 +6,7 @@
 /*   By: sforesti <sforesti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:13:45 by sforesti          #+#    #+#             */
-/*   Updated: 2024/03/15 16:10:13 by sforesti         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:04:58 by sforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ bool Error(int errorCode, std::string line, bool statut)
         std::cerr << "Error: too large number" << std::endl;
     if (errorCode == 6)
         std::cerr << "Error: not a positive number" << std::endl;
+    if (errorCode == 7)
+        std::cerr << "Error: not a number" << std::endl;
     return (false);
 }
 
@@ -81,18 +83,23 @@ float exportValue(std::string s)
 bool    verifSyntax(std::string line){
     
     bool statut = true;
-    if (line.find('|') == line.npos)
+    if (line.find('|') == line.npos || std::count(line.begin(), line.end(), '-') != 2)
         statut = Error(1, line, statut);
-    if (line.substr(line.find("-") + 1, line.find("-") - 2) > "12")
+    if (line.substr(line.find("-") + 1, 2) > "12" || line.substr(line.find("-") + 1, 2) < "01")
         statut = Error(2, line, statut);
-    if (line.substr(line.find_last_of("-") + 1, line.size() - 1) > "31")
+    if (line.substr(line.find_last_of("-") + 1, 2) > "31" || line.substr(line.find_last_of("-") + 1, 2) < "01")
         statut = Error(3, line, statut);
-    if (line.substr(0, line.find('-')) < "2009" || line.substr(0, line.find('-')) > "2024")
+    if (line.substr(0, 4) < "2009" || line.substr(0, 4) > "2024")
         statut = Error(4, line, statut);
-    if (exportValue(line) > 1000)
-        statut = Error(5, line, statut);
-    if (line[line.find("|") + 2] == '-')
+    if (line.find('-', line.find('|')) != line.npos)
         statut = Error(6, line, statut);
+    for (std::size_t i = 0; i < line.size(); i ++)
+    {
+        if (!std::isdigit(line[i]) && line[i] != '-' && line[i] != '|' && !std::isspace(line[i]) && line[i] != '.')
+            statut = Error(1, line, statut);
+    }
+    if (exportValue(line) > 1000 || exportValue(line) < 0)
+        statut = Error(5, line, statut);
     return (statut);
 }
 
